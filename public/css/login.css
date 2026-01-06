@@ -1,0 +1,170 @@
+/* --- Fondo general --- */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #003366, #cc0000);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Contenedor principal --- */
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+/* --- Tarjeta del login --- */
+.login-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px 30px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* --- Sección del logo --- */
+.logo-section img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 0px;
+}
+
+.logo-section h2 {
+    color: #003366;
+    margin: 2px 0;
+    font-size: 18px;
+}
+
+.logo-section p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* --- Formulario --- */
+.login-form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #003366;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.form-group input:focus {
+    border-color: #cc0000;
+    box-shadow: 0 0 5px rgba(204, 0, 0, 0.3);
+}
+
+/* --- Mensaje de error --- */
+/* animación inicial (suave) */
+.login-card.animated-in {
+    animation: fadeInScale 500ms ease both;
+}
+@keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Caja de mensajes fija (no cambia de tamaño) */
+.error-box {
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 14px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 12px;
+    box-sizing: border-box;
+    opacity: 1;
+    visibility: visible;
+    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+/* Estado inicial neutral */
+.error-box.neutral {
+    background: #f1f1f1;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+/* Estado de error */
+.error-box.error {
+    background: #fff0f0;
+    color: #cc0000;
+    border: 1px solid rgba(204,0,0,0.2);
+}
+/* === EFECTO SHAKE SUAVE SOLO EN LOS INPUTS === */
+@keyframes fieldShake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-3px); }
+    40% { transform: translateX(3px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
+
+.form-group.error input {
+    border-color: #cc0000;
+    box-shadow: 0 0 0 4px rgba(204,0,0,0.06);
+    animation: fieldShake 0.25s ease;
+}
+
+.btn-login {
+    width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #cc0000, #003366);
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.btn-login:hover { transform: translateY(-2px); opacity: 0.98; }
+
+
+/* efecto shake */
+.btn-logout {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #cc0000;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+.btn-logout:hover {
+  background: #a80000;
+}
+
+
+/* --- Animación --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
