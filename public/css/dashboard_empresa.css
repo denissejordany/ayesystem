@@ -1,0 +1,637 @@
+/* ====== Dashboard Empresa con Sidebar ====== */
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: #f0f7ff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden; /* evita scroll horizontal global */
+}
+/* ===== HEADER ===== */
+.dashboard-header {
+    background: #1565c0;
+    padding: 4px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.dashboard-header .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+   align-items: center;
+    justify-content: space-between;
+}
+footer .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+   align-items: center;
+    justify-content: center;
+}
+
+.btn-logout {
+    background: #ef5350;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: #d32f2f;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+}
+
+.dashboard-content {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+     padding: 20px;  
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+    width: 220px;
+    flex-shrink: 0; /* importante: evita que el sidebar se encoja */
+    background: #1e88e5;
+    color: white;
+    padding-top: 30px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.15);
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #42a5f5;
+    border-left: 4px solid #ffffff;
+}
+.sidebar .perfil-empresa {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.sidebar .perfil-empresa img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    width: 100%;
+    background-color: #4f5255;
+    color: white;
+    text-align: center;
+    padding: 1px 0;
+    position: relative;
+}
+
+/* ===== PERFIL DE EMPRESA ===== */
+.contenido-principal-wrapper {
+    background-color: #f5f6fa;
+    padding: 10px 30px;
+    min-height: 100%;
+}
+
+.contenido-principal {
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f6fa; /* Fondo del contenido */
+    min-height: 80vh;
+}
+
+.contenido-principal h2 {
+    color: #2f3640;
+    margin-bottom: 25px;
+    font-size: 28px;
+    border-bottom: 2px solid #dcdde1;
+    padding-bottom: 10px;
+}
+
+.perfil-empresa-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 30px;
+    background-color: #ffffff; /* Caja blanca para resaltar */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.perfil-empresa-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Logo de la empresa */
+.logo-empresa {
+    flex: 0 0 150px;
+}
+
+.logo-empresa img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #dcdde1;
+    background-color: #f1f2f6;
+    padding: 10px;
+    display: block;
+}
+
+/* Información de la empresa */
+.info-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 16px;
+    color: #2f3640;
+}
+
+.info-box p {
+    background-color: #f7f8fa;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #40739e;
+    transition: all 0.3s ease;
+}
+
+.info-box p:hover {
+    background-color: #e1e4ea;
+}
+/* ===== TABLA DE DOCUMENTOS ===== */
+
+.contenido-principal-documentos {
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/* Contenedor general de la tabla */
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.tabla-documentos {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 950px; /* <-- evita descuadre por columnas */
+}
+
+
+.tabla-documentos th,
+.tabla-documentos td {
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: middle;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+.modal-eliminar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-eliminar .modal-contenido {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+}
+
+.modal-botones {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-confirmar {
+    background: red;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.btn-cancelar {
+    background: #ccc;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+
+.tabla-documentos th {
+    background: #1565c0;
+    color: white;
+}
+
+.tabla-documentos tr:hover {
+    background: #f5f5f5;
+}
+
+/* Scroll bonito */
+.tabla-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.tabla-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.tabla-wrapper::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+.tabla-documentos th:nth-child(1),
+.tabla-documentos td:nth-child(1) { width: 15%; } /* Tipo documento */
+
+.tabla-documentos th:nth-child(2),
+.tabla-documentos td:nth-child(2) { width: 10%; } /* Fecha emisión */
+
+.tabla-documentos th:nth-child(3),
+.tabla-documentos td:nth-child(3) { width: 10%; } /* Fecha vencimiento */
+
+.tabla-documentos th:nth-child(4),
+.tabla-documentos td:nth-child(4) { width: 15%; } /* Observaciones */
+
+.tabla-documentos th:nth-child(5),
+.tabla-documentos td:nth-child(5) { width: 10%; } /* Archivo */
+
+.tabla-documentos th:nth-child(6),
+.tabla-documentos td:nth-child(6) { width: 20%; } /* Nombre PDF */
+
+.tabla-documentos th:nth-child(7),
+.tabla-documentos td:nth-child(7) { width: 12%; } /* Estado */
+
+.tabla-documentos th:nth-child(8),
+.tabla-documentos td:nth-child(8) { width: 8%; } /* Acciones */
+
+
+.estado-badge {
+    padding: 5px 10px;
+    color: white;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+/* =====MOVILES ===== */
+.barra-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.form-busqueda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-busqueda input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-buscar {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-buscar:hover {
+    background-color: #0056b3;
+}
+
+.btn-nuevo {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-nuevo:hover {
+    background-color: #218838;
+}
+
+/* =====MODAL + DOCUMENTO  ===== */
+/* 🔹 Fondo oscuro */
+.modal-overlay {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+/* 🔹 Contenedor del modal EDITAR*/
+/* 🔹 Fila de 2 columnas ordenadas con GRID (igual que editar) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Cada mitad del formulario */
+.form-row .mitad {
+  width: 100%;
+}
+
+/* 🔹 Labels */
+.form-grupo label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* 🔹 Inputs y selects */
+.form-grupo input,
+.form-grupo select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* 🔹 Textarea compacto */
+.form-grupo textarea {
+  width: 100%;
+  height: 60px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+/* 🔹 El modal NO debe tener scroll */
+#modal-nuevo-doc .modal-content {
+  max-height: none;
+  overflow-y: visible;
+}
+
+/* 🔹 Contenedor del modal EDITAR*/
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  max-height: 98vh;
+  overflow-y: auto;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔹 Campos y botones */
+.form-grupo {
+  margin-bottom: 15px;
+}
+
+.form-grupo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn-guardar {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-cerrar {
+  background-color: #aaa;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background-color: #0056b3;
+}
+
+.btn-cerrar:hover {
+  background-color: #888;
+}
+/* Fila de 2 columnas ordenadas con GRID */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Cada mitad del formulario */
+.form-row .mitad {
+  width: 100%;
+}
+
+/* Fuerza labels siempre arriba y alineados */
+.form-grupo label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Inputs, selects y dates ordenados */
+.form-grupo input,
+.form-grupo select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Textarea compacto */
+.form-grupo textarea {
+  width: 100%;
+  height: 60px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+#edit_observaciones {
+  min-height: 60px;
+  max-height: 100px;
+}
+
+/* ===== PAGINACIÓN ===== */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    gap: 8px;
+}
+
+.paginacion .btn-pag {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    background: #ffffff;
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+}
+
+.paginacion .btn-pag:hover {
+    background: #f3f3f3;
+    border-color: #bdbdbd;
+}
+
+.paginacion .btn-pag.activo {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    font-weight: bold;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ===== ALERTAS FLASH ===== */
+/* ❇️ FLASH MESSAGE (no afecta tus estilos existentes) */
+.flash-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #fff;
+    z-index: 9999;
+    opacity: 1;
+    animation: desaparecerFlash 3s ease forwards;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Éxito verde */
+.flash-exito {
+    background-color: #28a745;
+}
+
+/* Error rojo (por si lo usas luego) */
+.flash-error {
+    background-color: #dc3545;
+}
+
+@keyframes desaparecerFlash {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* =====MOVILES ===== */
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column; 
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .perfil-empresa-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-empresa {
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 1024px) {
+    .tabla-documentos th:nth-child(6),
+    .tabla-documentos td:nth-child(6) {
+        width: 15%; /* Nombre PDF un poco más corto */
+    }
+
+    .tabla-documentos th:nth-child(4),
+    .tabla-documentos td:nth-child(4) {
+        width: 12%; /* Observaciones más compacta */
+    }
+}
+
